@@ -1,0 +1,40 @@
+{
+  "name": "quasarbase-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Quasarbase",
+  "author": "Ekratos",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/ekratoschain/quasarbase.git"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "bcryptjs": "^2.4.3",
+    "bluebird": "3.7.2",
+    "body-parser": "1.20.0",
+    "compression": "1.7.4",
+    "connect-history-api-fallback": "1.6.0",
+    "cors": "2.8.5",
+    "express": "4.18.1",
+    "express-fileupload": "^1.4.3",
+    "express-form-data": "2.0.18",
+    "form-data": "4.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^6.12.3",
+    "morgan": "1.10.0",
+    "mustache": "4.2.0",
+    "stream": "^0.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">= 20.10.0"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "start-nodemon": "nodemon node app.js",
+    "lint": "eslint **/*.js --fix"
+  }
+}

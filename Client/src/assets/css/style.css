@@ -1,0 +1,20 @@
+.button{
+  margin: 10px ;
+  min-width: 130px;
+  background: #63c522;
+  color: white;
+}
+.TitleText{
+  font-size: x-large;
+  color:#63c522;
+}
+.text{
+  font-size: x-large;
+  color: #63c522;
+}
+.textMenu{
+  text-align: center;
+  color: #63c522;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
