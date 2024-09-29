@@ -2,7 +2,7 @@
 <!-- src/components/LandmarkDialog.vue -->
 <template>
   <q-dialog v-model="isOpen">
-    <q-card>
+    <q-card style="width: 500px; max-width: 100%">
       <q-card-section>
         <div class="text-h6">{{ landmark ? 'Edit' : 'Add' }} Landmark</div>
       </q-card-section>
@@ -14,7 +14,7 @@
             ref="searchInput"
             v-model="searchQuery"
             label="Search for a location"
-            @update:modelValue="onSearchInput"
+            @update:model-value="onSearchInput"
           ></q-input>
 
           <q-menu

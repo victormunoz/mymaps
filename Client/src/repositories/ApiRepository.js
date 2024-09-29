@@ -1,11 +1,9 @@
 import Repository from "./Repository";
 
 export default {
-  // Example GET
   getLandmarks ( ) {
     return Repository.new().get("/");
   },
-  // Example POST
   createLandmark ( data) {
     return Repository.new().post("/", data);
   },
@@ -14,6 +12,9 @@ export default {
   },
   deleteLandmark (id) {
     return Repository.new().post("/delete/" + id);
+  },
+  deleteLandmarks () {
+    return Repository.new().post("/delete-all");
   },
   importLandmarks (data) {
     return Repository.new().post("/import", data);
@@ -26,8 +27,4 @@ export default {
   register (email, password,verifypassword) {
     return Repository.new().post("/register", {email: email, password: password , verifypassword:verifypassword});
   },
-  //POST
-
-
-  //GET
 };

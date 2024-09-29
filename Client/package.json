@@ -1,9 +1,9 @@
 {
-  "name": "quasarbase-client",
+  "name": "mymaps-client",
   "version": "0.0.1",
-  "description": "Quasarbase Client",
-  "productName": "Quasarbase",
-  "author": "Ekratos",
+  "description": "Mymaps Client",
+  "productName": "Mymaps",
+  "author": "Victor Munoz",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
@@ -22,7 +22,7 @@
     "build-ios": "quasar build -m ios"
   },
   "dependencies": {
-    "@quasar/extras": "1.16.9",
+    "@quasar/extras": "^1.16.12",
     "@trevoreyre/autocomplete-vue": "^3.0.3",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "axios": "^1.7.7",
@@ -30,8 +30,8 @@
     "fs": "0.0.1-security",
     "leaflet": "^1.9.4",
     "papaparse": "^5.4.1",
-    "quasar": "2.14.2",
-    "vue": "3.3.13",
+    "quasar": "^2.17.0",
+    "vue": "^3.5.10",
     "vue-i18n": "9.8.0",
     "vue-leaflet": "^0.1.0",
     "vue-qrcode": "2.2.0",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.23.3",
-    "@quasar/app-webpack": "3.12.1",
+    "@quasar/app-webpack": "^3.14.0",
     "cordova": "12.0.0",
     "electron": "28.0.0",
     "electron-packager": "15.5.1",

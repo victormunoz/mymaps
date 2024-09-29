@@ -1,6 +1,5 @@
 const express = require('express');
 
-const ApiController = require('../controllers/ApiController');
 const AuthController = require('../controllers/AuthController');
 const Landmark = require("../models/landmark");
 
@@ -37,11 +36,19 @@ module.exports = function (app) {
         }
     });
 
-// Delete a landmark
     api.post('/delete/:id', async (req, res) => {
         try {
             await Landmark.findByIdAndDelete(req.params.id);
             res.json({ message: 'Landmark deleted' });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    api.post('/delete-all', async (req, res) => {
+        try {
+            await Landmark.deleteMany({});
+            res.json({ message: 'Landmarks deleted' });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }

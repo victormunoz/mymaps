@@ -4,10 +4,25 @@
     :columns="columns"
     :rows="landmarks"
     row-key="_id"
+    dense
+    :rows-per-page-options="[20, 50, 100, 200, 500]"
+    :pagination="pagination"
   >
     <template #body-cell-actions="props">
-      <q-btn flat icon="edit" @click="editLandmark(props.row)"></q-btn>
-      <q-btn flat icon="delete" @click="deleteLandmark(props.row._id)"></q-btn>
+      <q-btn-group flat>
+        <q-btn
+          flat
+          icon="edit"
+          aria-label="Edit Landmark"
+          @click="editLandmark(props.row)"
+        />
+        <q-btn
+          flat
+          icon="delete"
+          aria-label="Delete Landmark"
+          @click="deleteLandmark(props.row._id)"
+        />
+      </q-btn-group>
     </template>
   </q-table>
 </template>
@@ -27,7 +42,7 @@ export default {
       { name: 'tags', label: 'Tags', field: 'tags', format: (val) => val.join(', ') },
       { name: 'actions', label: 'Actions', field: 'actions' },
     ];
-    const pagination = ref({ sortBy: 'date', descending: true, page: 1, rowsPerPage: 10 });
+    const pagination = ref({ sortBy: 'date', descending: true, page: 1, rowsPerPage: 20 });
 
     onMounted(async () => {
       const response = await ApiRepository.getLandmarks();
@@ -40,8 +55,7 @@ export default {
 
     const deleteLandmarkById = async (id) => {
       await ApiRepository.deleteLandmark(id);
-      const response = await ApiRepository.getLandmarks();
-      landmarks.value = response.data;
+      window.location.reload();
     };
 
     return {

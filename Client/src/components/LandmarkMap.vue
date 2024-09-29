@@ -5,18 +5,17 @@
       ref="mapRef"
       :zoom="zoom"
       :center="center"
-      style="height: 500px;"
+      style="height: 800px;"
     >
       <l-tile-layer :url="tileLayerUrl"></l-tile-layer>
       <l-marker
         v-for="landmark in landmarks"
         :key="landmark._id"
         :lat-lng="[landmark.coordinates.lat, landmark.coordinates.lng]"
+        :icon="customIcon"
         @click="selectLandmark(landmark)"
       ></l-marker>
     </l-map>
-
-    <q-btn label="Add Landmark" @click="openAddDialog"></q-btn>
 
     <!-- Landmark Dialog -->
     <landmark-dialog
@@ -30,12 +29,14 @@
 </template>
 
 <script>
-import { ref, onMounted, watch, nextTick } from 'vue';
+import { ref, onMounted, watch, nextTick, defineExpose } from 'vue';
 import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
 import ApiRepository from '../repositories/ApiRepository';
 import LandmarkDialog from './LandmarkDialog.vue';
 import L from 'leaflet';
+
+import customMarkerIcon from '../assets/icons/marker.png';
 
 export default {
   components: {
@@ -49,9 +50,16 @@ export default {
     const selectedLandmark = ref(null);
     const showDialog = ref(false);
     const tileLayerUrl = ref('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
-    const center = ref([0, 0]); // Default center
-    const zoom = ref(2); // Default zoom to show the full Earth
+    const center = ref([35, -41]); // Default center
+    const zoom = ref(3); // Default zoom
     const mapRef = ref(null);
+
+    const customIcon = L.icon({
+      iconUrl: customMarkerIcon,
+      iconSize: [32, 32], // size of the icon
+      iconAnchor: [16, 32], // point of the icon which will correspond to marker's location
+      popupAnchor: [0, -32], // point from which the popup should open relative to the iconAnchor
+    });
 
     const updateMapView = () => {
       nextTick(() => {
@@ -109,6 +117,10 @@ export default {
       // No need to call updateMapView() here since the watcher on landmarks will handle it
     };
 
+    defineExpose({
+      openAddDialog,
+    });
+
     return {
       landmarks,
       selectedLandmark,
@@ -122,6 +134,7 @@ export default {
       closeDialog,
       saveLandmark,
       deleteLandmark,
+      customIcon
     };
   },
 };

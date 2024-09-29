@@ -1,12 +1,12 @@
 {
-  "name": "quasarbase-server",
+  "name": "mymaps-server",
   "version": "0.1.0",
   "private": true,
-  "description": "Quasarbase",
-  "author": "Ekratos",
+  "description": "Mymaps",
+  "author": "Victor Munoz",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/ekratoschain/quasarbase.git"
+    "url": "https://bitbucket.org/victormunoz/mymaps.git"
   },
   "dependencies": {
     "axios": "^1.6.2",
