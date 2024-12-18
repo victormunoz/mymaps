@@ -3,6 +3,9 @@
 Node.js version 20 or higher.
 Download it at https://nodejs.org/
 
+Mongo version 8 or higher.
+Download it at https://www.mongodb.com/try/download/community
+
 # Server
 
 Install server dependencies. Go to Server directory and run:

@@ -30,7 +30,7 @@ const Constants = require('./config/constants')
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.set('strictQuery', false);
-mongoose.connect(config.database.url, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(config.database.url, {  })
     .then(() => console.log('DB Connected!'))
     .catch(err => {
         console.log(err.message);

@@ -46,10 +46,9 @@
     <q-drawer
       v-model="drawerOpen"
       side="left"
-      width="500"
+      :width="500"
       bordered
       class="bg-grey-1"
-      :behavior="drawerBehavior"
       overlay-if-above
     >
       <q-toolbar>
@@ -212,8 +211,7 @@ export default {
       toggleDrawer,
       addLandmark,
       deleteAll,
-      landmarkMapRef,
-      drawerBehavior: 'responsive', // Define behavior based on screen size
+      landmarkMapRef
     };
   },
 };

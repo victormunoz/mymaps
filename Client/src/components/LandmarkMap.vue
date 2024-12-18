@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { ref, onMounted, watch, nextTick, defineExpose } from 'vue';
+import { ref, onMounted, watch, nextTick } from 'vue';
 import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
 import ApiRepository from '../repositories/ApiRepository';
@@ -116,10 +116,6 @@ export default {
       closeDialog();
       // No need to call updateMapView() here since the watcher on landmarks will handle it
     };
-
-    defineExpose({
-      openAddDialog,
-    });
 
     return {
       landmarks,
