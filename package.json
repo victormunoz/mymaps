@@ -2,6 +2,6 @@
   "name": "vue-node-app",
   "scripts": {
     "start": "node Server/app.js",
-    "build": "cd Client && npm install && npm run build"
+    "build": "cd Client && npm install && npm run build-pwa"
   }
 }

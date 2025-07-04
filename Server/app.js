@@ -4,6 +4,8 @@
  * Copyright (c) 2013-2016 Stephen Braitsch
  **/
 
+require('dotenv').config({ path: '../.env' });
+
 // Read params
 let prevArg = "";
 process.socket = false;
@@ -30,7 +32,7 @@ const Constants = require('./config/constants')
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.set('strictQuery', false);
-mongoose.connect(config.database.url, {  })
+mongoose.connect(process.env.MONGO_URI, {  })
     .then(() => console.log('DB Connected!'))
     .catch(err => {
         console.log(err.message);
@@ -41,14 +43,4 @@ if (process.cron) {
     module.exports = require('./cron')(config);
 } else {
     module.exports = require('./server')(config);
-}
-
-if (process.network === "alastria") {
-    Constants.URL_NODE = config.networks.alastria.host;
-}
-else if (process.network === "telsius_test") {
-    Constants.URL_NODE = config.networks.telsius_test.host;
-}
-else if (process.network === "substrate") {
-    Constants.URL_NODE = config.networks.substrate.host;
 }
