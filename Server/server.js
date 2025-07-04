@@ -17,7 +17,8 @@ module.exports = function (config) {
     app.use(history());
 
     // Static files from Client
-    app.use(express.static('static'));
+    const path = require('path');
+    app.use(express.static(path.join(__dirname, '../Client/dist')));
 
     // Port
     app.set('port', port);
