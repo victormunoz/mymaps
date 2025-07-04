@@ -257,7 +257,7 @@
 
         <!-- No data template -->
         <template #no-data>
-          <div class="no-data-container">
+          <div class="no-data-container" style="margin: auto">
             <q-icon name="explore_off" size="4rem" class="text-grey-5" />
             <div class="no-data-text">No s'han trobat landmarks</div>
             <div class="no-data-subtitle">

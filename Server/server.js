@@ -6,6 +6,7 @@ const fileUpload = require('express-fileupload');
 const formData = require('express-form-data')
 const cors = require('cors');
 const history = require("connect-history-api-fallback");
+const path = require('path');
 
 module.exports = function (config) {
 
