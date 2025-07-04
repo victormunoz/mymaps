@@ -14,11 +14,20 @@ module.exports = function (config) {
     const app = express();
 
     app.use(compression());
-    app.use(history());
+    
+    const staticPath = path.join(__dirname, '../Client/dist');
 
-    // Static files from Client
-    const path = require('path');
-    app.use(express.static(path.join(__dirname, '../Client/dist')));
+    // Serveix fitxers directament abans de passar per history
+    app.use(express.static(staticPath));
+
+    // Només redirigeix rutes que no siguin fitxers
+    app.use(history({
+        disableDotRule: true,
+        verbose: true
+    }));
+
+    // Torna a servir els fitxers després del fallback
+    app.use(express.static(staticPath));
 
     // Port
     app.set('port', port);
