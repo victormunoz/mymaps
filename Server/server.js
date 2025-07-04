@@ -16,7 +16,9 @@ module.exports = function (config) {
 
     app.use(compression());
     
-    const staticPath = path.join(__dirname, '../Client/dist');
+    const staticPath = path.join(__dirname, '../Client/dist/pwa');
+
+    console.log('✅ Servint Quasar PWA des de:', staticPath);
 
     // Serveix fitxers directament abans de passar per history
     app.use(express.static(staticPath));
