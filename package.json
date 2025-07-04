@@ -1,0 +1,7 @@
+{
+  "name": "vue-node-app",
+  "scripts": {
+    "start": "node server/server.js",
+    "build": "cd client && npm install && npm run build"
+  }
+}
