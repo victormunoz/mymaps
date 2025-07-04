@@ -1,21 +1,21 @@
-<!-- src/components/LandmarkDialog.vue -->
-<!-- src/components/LandmarkDialog.vue -->
 <template>
   <q-dialog v-model="isOpen">
     <q-card style="width: 500px; max-width: 100%">
-      <q-card-section>
-        <div class="text-h6">{{ landmark ? 'Edit' : 'Add' }} Landmark</div>
+      <q-card-section class="bg-gradient text-white q-pb-none">
+        <div class="text-h6">{{ landmark ? 'Editar' : 'Afegir' }} Landmark</div>
       </q-card-section>
 
-      <q-card-section>
+      <q-card-section class="q-gutter-md">
         <!-- Autocomplete Input for Place Search -->
         <div style="position: relative;">
           <q-input
             ref="searchInput"
             v-model="searchQuery"
-            label="Search for a location"
+            label="Cerca ubicació"
+            filled
+            dense
             @update:model-value="onSearchInput"
-          ></q-input>
+          />
 
           <q-menu
             v-model="showSuggestions"
@@ -33,34 +33,33 @@
                 clickable
                 @click="selectResult(result)"
               >
-                <q-item-section>
-                  {{ result.display_name }}
-                </q-item-section>
+                <q-item-section>{{ result.display_name }}</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
         </div>
 
         <!-- Other Inputs -->
-        <q-input v-model="form.place" label="Place"></q-input>
-        <q-input v-model="form.country" label="Country"></q-input>
-        <q-input v-model="form.date" label="Date" type="date"></q-input>
-        <q-input v-model="form.year" label="Year" type="number"></q-input>
-        <q-input v-model="form.tags" label="Tags (comma-separated)"></q-input>
-        <q-input v-model="form.coordinates.lat" label="Latitude" type="number"></q-input>
-        <q-input v-model="form.coordinates.lng" label="Longitude" type="number"></q-input>
+        <q-input v-model="form.place" label="Lloc" filled dense />
+        <q-input v-model="form.country" label="País" filled dense />
+        <q-input v-model="form.date" label="Data" type="date" filled dense />
+        <q-input v-model="form.year" label="Any" type="number" filled dense />
+        <q-input v-model="form.tags" label="Tags (separats per comes)" filled dense />
+
+        <div class="row q-col-gutter-sm">
+          <div class="col-6">
+            <q-input v-model="form.coordinates.lat" label="Latitud" type="number" filled dense />
+          </div>
+          <div class="col-6">
+            <q-input v-model="form.coordinates.lng" label="Longitud" type="number" filled dense />
+          </div>
+        </div>
       </q-card-section>
 
-      <q-card-actions align="right">
-        <q-btn flat label="Cancel" @click="close"></q-btn>
-        <q-btn flat label="Save" color="primary" @click="save"></q-btn>
-        <q-btn
-          v-if="landmark"
-          flat
-          label="Delete"
-          color="negative"
-          @click="confirmDelete"
-        ></q-btn>
+      <q-card-actions align="right" class="q-pa-md">
+        <q-btn flat label="Cancel·lar" @click="close" />
+        <q-btn flat label="Desar" color="primary" @click="save" />
+        <q-btn v-if="landmark" flat label="Eliminar" color="negative" @click="confirmDelete" />
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -153,11 +152,10 @@ export default {
       }
       searchTimeout.value = setTimeout(() => {
         fetchSearchResults();
-      }, 300); // Debounce time
+      }, 300);
     };
 
     const fetchSearchResults = async () => {
-      console.log("fetching")
       if (!searchQuery.value) {
         searchResults.value = [];
         return;
@@ -200,7 +198,6 @@ export default {
     };
 
     const onBlur = () => {
-      // Delay hiding suggestions to allow click event to register
       setTimeout(() => {
         showSuggestions.value = false;
       }, 200);
@@ -226,8 +223,10 @@ export default {
 </script>
 
 <style scoped>
-/* Adjust the position and width of the suggestions menu */
-.q-menu {
-  min-width: 100%;
+.bg-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 16px 24px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 </style>
