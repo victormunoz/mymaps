@@ -104,6 +104,11 @@ export default {
       showDialog.value = true;
     };
 
+    const openAddDialog = () => {
+      selectedLandmark.value = null;
+      showDialog.value = true;
+    };
+
     const closeDialog = () => showDialog.value = false;
 
     const saveLandmark = async () => {
@@ -118,6 +123,16 @@ export default {
       closeDialog();
     };
 
+    const centerMap = () => {
+      if (mapRef.value && mapRef.value.mapObject) {
+        if (landmarks.value.length) {
+          updateMapView();
+        } else {
+          mapRef.value.mapObject.setView(center.value, zoom.value);
+        }
+      }
+    };
+
     return {
       landmarks,
       selectedLandmark,
@@ -128,9 +143,11 @@ export default {
       mapRef,
       getIconForTag,
       selectLandmark,
+      openAddDialog,
       closeDialog,
       saveLandmark,
       deleteLandmark,
+      centerMap,
     };
   },
 };
