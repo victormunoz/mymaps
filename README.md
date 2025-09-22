@@ -1,35 +1,35 @@
-# Requirements
+# Mymaps
 
-Node.js version 20 or higher.
-Download it at https://nodejs.org/
+## Technology
 
-Mongo version 8 or higher.
-Download it at https://www.mongodb.com/try/download/community
+- Node.js version 20 or higher.
+- Mongo version 8 or higher.
+- Render for deployment
 
-# Server
-
-Install server dependencies. Go to Server directory and run:
+## Local Installation and Run
 
 ```
+   cd Server
    npm i
-```
-
-Start the server executing:
-
-```
    npm run start
 ```
 
-# Client
-
-Install client dependencies. Go to Client directory and run:
-
 ```
+   cd Client
    npm i
-```
-
-Start the client executing:
-
-```
    npm run execute
 ```
+
+## Database
+
+Mongo
+
+String connection in .env (MONGO_URI)
+
+## Publish
+
+Push to master branch.
+
+## Access
+
+https://mymaps-aeng.onrender.com/
